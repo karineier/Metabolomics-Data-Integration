@@ -13,6 +13,7 @@ library("lmerTest")
 library("tidyverse")
 library("openxlsx")
 
+
 longitudinalModels = function(sex) {
   
   sexname.0 = ifelse(sex=="F", "Females", "Males")
@@ -33,6 +34,9 @@ longitudinalModels = function(sex) {
     with(MEs, order(rownames(MEs))),
   ]
   
+  MEnames = colnames(MEs.1)
+  no.MEs = length(MEnames)
+  
   traits = read.csv("/Users/karineier/Documents/Mecp2/WGCNA_Metabolomics/Metabolomics_Traits.csv")
   traits = subset(traits, Sex_cat==sex)
   
@@ -49,7 +53,9 @@ longitudinalModels = function(sex) {
   
   traitcor = cor(MEs.1, traits[,-c(1:4, 6, 7)], use="p", method="spearman") 
   
-  openxlsx::write.xlsx(traitcor, file=glue::glue("traitcors_{sex}.xlsx"))
+  traitnames = colnames(traits[,-c(1:4, 6, 7)])
+  
+  write.table(as.data.frame(traitcor), file=glue::glue("traitcors_{sex}.txt"), )
   
   ### setting up models ###
   
@@ -123,7 +129,7 @@ longitudinalModels = function(sex) {
   
 }
 
-lapply(c("F", "M"), longitudinalModels)
+list = lapply(c("F", "M"), longitudinalModels)
 
 
 

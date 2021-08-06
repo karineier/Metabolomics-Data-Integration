@@ -36,7 +36,7 @@ traitHeatmaps = function(sex) {
   traitcor.select = traitcor[,c(1,2,4,11:13,15,16)]
   textMatrix.traits.select = textMatrix.traits[,c(1,2,4,11:13,15,16)]
   
-  tiff(glue::glue("Trait_Heatmap_selected_traits_{sex}.tiff"), res=400, height=5, width=3.5, units="in")
+  tiff(glue::glue("Trait_Heatmap_selected_traits_{sex}.tiff"), res=400, height=5, width=3.75, units="in")
   map2 = labeledHeatmap(Matrix = traitcor.select,
                         xLabels = colnames(traitcor.select),
                         yLabels = rownames(traitcor.select),
@@ -48,7 +48,8 @@ traitHeatmaps = function(sex) {
                         cex.text = 1,
                         cex.lab.x = 0.75,
                         cex.lab.y = 0.65,
-                        main=paste("Traits Associated with Metabolomic Modules:", ifelse(sex=="F", "Females", "Males")))
+                        main=paste("Traits Associated with 
+  Metabolomic Modules:", ifelse(sex=="F", "Females", "Males")))
   dev.off()
   
   

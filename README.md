@@ -6,7 +6,7 @@ Untargeted metabolomics data is challenging to interpret since it is typically c
 ## Integration with Phenotyping Data
 The R code provided here demonstrates the use of modeling metabolite module Eigenvalues in linear mixed effects regression (LMER) models to investigate the relationships between the gut microbiome and phenotypes and genotypes longitudinally. An additional R script is provided for generating heatmaps depicting these associations. Below is an example:
 
-[heatmap]()
+[heatmap](Trait_Heatmap_selected_traits_F.tiff)
 
 
 ## Integration with Microbiome Data
